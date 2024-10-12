@@ -11,8 +11,8 @@ show_main_menu() {
         options="Turn On Wi-Fi\nExit"
     fi
 
-    # Show options in Rofi menu
-    selection=$(echo -e "$options" | rofi -dmenu -p "Wi-Fi Options")
+    # Show options in Rofi menu with custom theme
+    selection=$(echo -e "$options" | rofi -dmenu -p "Wi-Fi Options" -theme-str "@import 'path/to/your/rofi/theme.rasi'")
 
     echo "$selection"
 }
@@ -24,7 +24,7 @@ show_wifi_menu() {
     available_networks=$(nmcli -f SSID dev wifi | sed -n '1!p' | awk 'NF')
 
     # Show saved networks first in the Rofi menu, then new available networks
-    networks=$(echo -e "Saved Networks:\n$saved_networks\n\nAvailable Networks:\n$available_networks\n\nBack" | rofi -dmenu -p "Select Wi-Fi")
+    networks=$(echo -e "Saved Networks:\n$saved_networks\n\nAvailable Networks:\n$available_networks\n\nBack" | rofi -dmenu -p "Select Wi-Fi" -theme-str "@import 'path/to/your/rofi/theme.rasi'")
 
     echo "$networks"
 }
@@ -57,7 +57,7 @@ while true; do
                 notify-send "Failed to connect to $networks"
             else
                 # For new networks, prompt for password
-                password=$(rofi -dmenu -p "Enter password for $networks")
+                password=$(rofi -dmenu -p "Enter password for $networks" -theme-str "@import 'path/to/your/rofi/theme.rasi'")
 
                 # Attempt to connect using the password
                 if [ -n "$password" ]; then
@@ -71,3 +71,4 @@ while true; do
         exit # Exit the script entirely
     fi
 done
+
