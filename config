@@ -112,7 +112,7 @@ input "1267:12423:ELAN1300:00_04F3:3087_Touchpad" {
 
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set +10%
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-S
-    bindsym  Super_L exec ~/.config/sway/display.sh
+    # bindsym  Super_L exec ~/.config/sway/display.shq
 
 
     # Reload the configuration file
